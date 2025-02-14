@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask 登入與上傳</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <style>
+        .custom-password {
+            font-family: "Arial", sans-serif;
+        }
+        .custom-password::placeholder {
+            font-family: "Arial", sans-serif;
+        }
+    </style>
+    <script type="text/javascript">
+        function showPassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>登入</h2>
+    <form id="loginForm">
+        <input type="text" name="username" placeholder="帳號" required>
+        <input type="password" id="password" name="password" class="custom-password" placeholder="密碼" required>
+        <button type="submit">登入</button>
+    </form>
+    <div>
+        <input type="checkbox" onclick="showPassword()"> 顯示密碼
+    </div>
+    <p id="loginMessage">登入訊息</p>
+
+    <h2>註冊</h2>
+    <form id="registerForm">
+        <input type="text" name="username" placeholder="帳號" required>
+        <input type="password" name="password" class="custom-password" placeholder="密碼" required>
+        <button type="submit">註冊</button>
+    </form>
+    <p id="registerMessage"></p>
+
+    <h2>圖片上傳</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">上傳</button>
+    </form>
+    <p id="uploadMessage"></p>
+
+    <h2>登出</h2>
+    <a href="/logout">登出</a>
+</body>
+</html>
